@@ -44,6 +44,7 @@ where jpf.job_title_short = 'Data Analyst'
     and jpf.job_work_from_home is True
     and jpf.salary_year_avg is not null
 group by sd.skill_id
-order by demand_count desc,
-    avg_salary desc
+having count(sjd.job_id) > 10
+order by avg_salary desc,
+    demand_count desc
 limit 25;
